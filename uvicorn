@@ -1,0 +1,1 @@
+uvicorn nombre_del_script:app --reload
