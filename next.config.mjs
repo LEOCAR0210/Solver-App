@@ -21,6 +21,15 @@ const nextConfig = {
     parallelServerBuildTraces: true,
     parallelServerCompiles: true,
   },
+  // Rewrites útiles en desarrollo para redirigir /api a tu backend local (FastAPI)
+  async rewrites() {
+    return [
+      {
+        source: "/api/:path*",
+        destination: "http://127.0.0.1:8000/:path*", // backend local
+      },
+    ];
+  },
 }
 
 mergeConfig(nextConfig, userConfig)
