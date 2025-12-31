@@ -38,7 +38,7 @@ def generate_solution(problem: ProblemCreate) -> List[str]:
     steps: List[str] = []
 
     # Caso sencillo para problemas matemáticos
-    if problem.type.lower() in ("matematico", "mathematics") or any(k in text for k in ["integral", "deriv", "∫", "^", "sqrt", "sumatoria", "sum"]):
+    if problem.type.lower() in ("matematico", "mathematics") or any(k in text for k in ["integral", "deriv", "\u222b", "^", "sqrt", "sumatoria", "sum"]):
         steps.append("<p>1) Interpretar la expresión y variables implicadas.</p>")
         steps.append("<p>2) Simplificar la expresión cuando sea posible.</p>")
         steps.append("<p>3) Aplicar el método adecuado (por ejemplo, integración por partes, sustitución, series, etc.).</p>")
@@ -56,8 +56,7 @@ def generate_solution(problem: ProblemCreate) -> List[str]:
 
 @app.post("/solve")
 async def solve(problem: ProblemCreate):
-    """
-    Recibe un problema y devuelve una solución generada (mock).
+    """Recibe un problema y devuelve una solución generada (mock).
 
     Respuesta esperada por el frontend:
     {
